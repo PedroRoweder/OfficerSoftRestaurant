@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Restaurante OfficerSoft</title>
+        <link rel="stylesheet" href="indexCSS.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet"> 
+    </head>
+    <body>
+        <h1>Restaurante OfficerSoft</h1>
+        <div id="mesas">
+            <h1>Mesas</h1>
+            <ul>
+                <li>Mesa 1 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 2 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 3 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 4 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 5 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 6 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 7 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 8 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 9 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+                <li>Mesa 10 - Pessoas ( <p id="pessoas1">0</p> ) - Valor ( R$<p id="valor1">0,00</p> )</li>
+            </ul>
+        </div>
+        <div id="pedidos">
+            <h1>Pedidos</h1>
+            <div id="menuzinho">
+            <h2>Check-in</h2>
+            <input type="number" placeholder="Mesa" min="1" max="10">
+            <input type="number" placeholder="Clientes" min="1" max="4">
+            <button>Check-in</button>
+            </div>
+            <div id="menuzinho2">
+                <h2>Adicionar Pedido</h2>
+                <input type="number" placeholder="Mesa" min="1" max="10">
+                <select name="pedidos" id="listaPedidos">
+                    <option value="#">Batata Frita</option>
+                    <option value="#">Batata Sautee</option>
+                    <option value="#">Porcão de Frango</option>
+                    <option value="#">Porcão de Carne</option>
+                    <option value="#">Hamburguer Original</option>
+                    <option value="#">Refrigerante</option>
+                    <option value="#">Cerveja</option>
+                    <option value="#">Suco</option>
+                </select>
+                <button>Adicionar</button>
+            </div>
+        </div>
+        <div id="stats">
+            <h1>Estatisticas do Restaurante</h1>
+            <ul>
+                <li>Quantidade de Mesas Livres: <p id="mesasLivres">10</p></li>
+                <li>Quantidade de Mesas Ocupadas: <p id="mesasOcupadas">0</p></li>
+                <li>Quantidade de Pessoas no Restaurante: <p id="pessoasNoRestaurante">0</p></li>
+                <li>Dinheiro à receber: R$<p id="dinheiroReceber">0,00</p></li>
+            </ul>
+        </div>
+        <div id="idFecharMesa">
+            <button id="fecharMesa">Fechar Mesa</button>
+        </div>
+    </body>
+</html>

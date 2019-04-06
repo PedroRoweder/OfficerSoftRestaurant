@@ -1,0 +1,225 @@
+html {
+    background-color: #bdc3c7;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    width: 40%;
+    margin: 0 auto;
+    font-family: 'Quicksand', sans-serif;
+    color: #393b3b;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #383d3d;
+    transition: 1s;
+}
+h1:hover {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#mesas {
+    height: 90%;
+    width: 47%;
+    margin: 1%;
+    padding: 0;
+    border: 0;
+    border-radius: 15px;
+    float: left;
+    background-color: #404040;
+}
+
+#mesas h1 {
+    text-align: center;
+    font-size: 3em;
+    width: 50%;
+    margin: 0 auto;
+    font-family: 'Quicksand', sans-serif;
+    color: #95a4a5;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #656b6b;
+}
+
+#mesas ul {
+    padding: 0px 15px;
+    margin: 0;
+}
+
+#mesas ul li {
+    font-size: 1.4em;
+    font-family: 'Quicksand', sans-serif;
+    list-style: none;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    border-bottom: 3px solid #257245;
+    background-color: #27ae60;
+    transition: 500ms;
+    text-align: center;
+}
+#mesas ul li:hover{
+    background-color: #34c972;
+}
+
+#mesas ul li p {
+    display: inline;
+}
+
+#pedidos {
+    width: 47%;
+    height: 30%;
+    margin: 1%;
+    margin-bottom: -5px;
+    float: right;
+    border: 0;
+    border-radius: 15px;
+    background-color: #404040;
+}
+
+#pedidos h1 {
+    text-align: center;
+    font-size: 3em;
+    width: 50%;
+    margin: 0 auto;
+    font-family: 'Quicksand', sans-serif;
+    color: #95a4a5;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #656b6b;
+}
+
+#pedidos h2 {
+    text-align: center;
+    font-size: 1.5em;
+    width: 35%;
+    margin: 0 auto;
+    font-family: 'Quicksand', sans-serif;
+    color: #b1c1c2;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #656b6b;
+}
+
+#menuzinho, #menuzinho2 {
+    margin: 0 auto;
+    margin: 0 50px;
+    padding: 0;
+    border: 0px;
+    text-align: center;
+}
+
+#pedidos input {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 5px 2px;
+    margin: 0;
+    margin-bottom: 15px;
+    background: none;
+    border: 2px solid #656b6b;
+    border-radius: 20px;
+    color: #ecf0f1;
+    transition: 500ms;
+}
+#pedidos input:focus {
+    border: 2px solid #2ecc71;
+}
+
+#pedidos select {
+    appearance: none;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 5px 2px;
+    margin: 0;
+    margin-bottom: 15px;
+    background: none;
+    border: 2px solid #656b6b;
+    border-radius: 20px;
+    color: #ecf0f1;
+    transition: 500ms;
+}
+#pedidos select:focus{
+    border: 2px solid #2ecc71;
+}
+
+#pedidos button {
+    width: 30%;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 5px 20px;
+    margin: 0;
+    margin-bottom: 30px;
+    background: none;
+    border: 2px solid #656b6b;
+    border-radius: 20px;
+    color: #ecf0f1;
+    transition: 500ms;
+    clear: both;
+}
+#pedidos button:hover {
+    border: 2px solid #2ecc71;
+}
+
+#stats {
+    width: 47%;
+    height: 30%;
+    margin: 1%;
+    float: right;
+    border: 0;
+    border-radius: 15px;
+    background-color: #404040;
+}
+
+#stats h1 {
+    text-align: center;
+    font-size: 2em;
+    width: 60%;
+    margin: 0 auto;
+    font-family: 'Quicksand', sans-serif;
+    color: #95a4a5;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    border-bottom: 3px solid #656b6b;
+}
+
+#stats ul {
+    float: left;
+    margin: 0 0 10 0;
+    padding: 0;
+    width: 100%;
+}
+
+#stats ul li {
+    list-style: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2em;
+    margin: 5px 30px;
+    color: #ecf0f1;
+    border-bottom: 1px solid #6f7a7a;
+}
+#stats ul li p{
+    display: inline;
+}
+
+
+#idFecharMesa button {
+    width: 80%;
+    margin-left: 10%;
+    padding: 5px 10px;
+    border: none;
+    background: #404040;
+    color: #ecf0f1;
+    font-size: 2em;
+    border-radius: 30px;
+    font-family: 'Quicksand', sans-serif;
+    letter-spacing: 1em;
+    transition: 500ms;
+}
+
+#idFecharMesa button:hover{
+    color: #2ecc71;
+    letter-spacing: 0em;
+    font-weight: 700;
+    background-color: #303030;
+}
