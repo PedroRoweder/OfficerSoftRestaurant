@@ -113,6 +113,7 @@ h1:hover {
 
 #pedidos input {
     font-size: 1.2em;
+    width: 100px;
     text-align: center;
     padding: 5px 2px;
     margin: 0;
@@ -124,9 +125,11 @@ h1:hover {
     transition: 500ms;
 }
 #pedidos input::placeholder { color: #ecf0f1; }
-#pedidos input:focus {
-    border: 2px solid #2ecc71;
-}
+#pedidos input:focus { border: 2px solid #2ecc71; }
+#pedidos select { width: 207px; }
+#pedidos select option { background-color: #656b6b; text-align: center;}
+
+
 
 #pedidos select {
     appearance: none;
