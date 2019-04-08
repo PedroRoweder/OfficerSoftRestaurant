@@ -4,8 +4,8 @@ $(document).ready(function() {
     let pessasNoRestaurante = 0;
     let mesasLivres = 10;
     let mesasOcupadas = 0;
+    let dinheiroReceber = 0;
     let mesas = [0,0,0,0,0,0,0,0,0,0];
-    console.log(mesasLivres);
 
     $('#checkin').on('click', function adicionaMesa(){
         let numeroDaMesa = document.getElementById("mesaCheckin").value;
@@ -19,7 +19,7 @@ $(document).ready(function() {
         $('#pessoasNoRestaurante').html(pessasNoRestaurante);
 
         $('#mesa' + numeroDaMesa).css("background-color", "#db5243");
-        $('#mesa' + numeroDaMesa).css("border-color", "#962a1e")
+        $('#mesa' + numeroDaMesa).css("border-color", "#962a1e");
         $('#mesa' + numeroDaMesa).hover(function(){
             $('#mesa' + numeroDaMesa).css("background-color", "#e47366");
         },function(){
@@ -33,9 +33,10 @@ $(document).ready(function() {
         let numeroDaMesa = parseInt(document.getElementById("mesaPedidos").value);
         let valorDoPedido = parseInt(document.getElementById("listaPedidos").value);
 
+        dinheiroReceber += valorDoPedido;
         mesas[numeroDaMesa - 1] += valorDoPedido;
 
         $('#valor' + numeroDaMesa).html(mesas[numeroDaMesa - 1]);
-
+        $('#dinheiroReceber').html(dinheiroReceber);
     });
 });
