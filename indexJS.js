@@ -1,4 +1,5 @@
-
+$('.testeFecharMesa').hide();
+$('#fechamentoDePedidoOpacidade').hide();
 $(document).ready(function() {
 
     let pessasNoRestaurante = 0;
@@ -11,6 +12,7 @@ $(document).ready(function() {
     $('#checkin').on('click', function adicionaMesa(){
         let numeroDaMesa = document.getElementById("mesaCheckin").value;
         let numeroDePessoas = document.getElementById("clientes").value;
+        $('#fecharMesa' + numeroDaMesa).show();
         if(!ocupacao[numeroDaMesa - 1] && numeroDePessoas > 0 && numeroDaMesa > 0 && numeroDaMesa <= 10) {
             ocupacao[numeroDaMesa - 1] = 1;
             pessasNoRestaurante = pessasNoRestaurante + parseInt(numeroDePessoas);
@@ -46,4 +48,13 @@ $(document).ready(function() {
         $('#dinheiroReceber').html(dinheiroReceber);
         }else { alert("Não é possivel adicionar um pedido a uma mesa vazia!"); }
     });
+
+    $('.testeFecharMesa').on('click', function(){
+        $('#fechamentoDePedidoOpacidade').fadeIn(300);
+    });
+
+    
+    $('#fechamentoDePedidoOpacidade').on('click', function(){
+        $('#fechamentoDePedidoOpacidade').fadeOut(300);
+    })
 });
