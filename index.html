@@ -37,7 +37,8 @@
             <div id="menuzinho2">
                 <h2>Adicionar Pedido</h2>
                 <input type="number" placeholder="Mesa" min="1" max="10" id="mesaPedidos">
-                <select name="pedidos" id="listaPedidos" aria-placeholder="Pedido">
+                <input type="number" placeholder="Qtd." min="1" id="quantidadeDoPedido">
+                <select name="pedidos" id="listaPedidos" placeholder="Pedidos">
                     <option value="15">Batata Frita</option>
                     <option value="17">Batata Sautee</option>
                     <option value="20">Porcão de Frango</option>
@@ -45,9 +46,25 @@
                     <option value="18">Hamburguer Original</option>
                     <option value="4">Refrigerante</option>
                     <option value="7">Cerveja</option>
-                    <option value="5">Suco</option>
+                    <option value="5" >Suco</option>
                 </select>
                 <button id="submitPedidos">Adicionar</button>
+            </div>
+            <div id="menuzinho3">
+                <h2>Remover Pedido</h2>
+                <input type="number" id="mesaRemover" min="1" max="10" placeholder="Mesa">
+                <input type="number" placeholder="Qtd." min="1" id="quantidadeDoPedidoRemover">
+                <select name="pedidos" id="listaPedidosRemover" placeholder="Pedidos">
+                    <option value="15">Batata Frita</option>
+                    <option value="17">Batata Sautee</option>
+                    <option value="20">Porcão de Frango</option>
+                    <option value="22">Porcão de Carne</option>
+                    <option value="18">Hamburguer Original</option>
+                    <option value="4">Refrigerante</option>
+                    <option value="7">Cerveja</option>
+                    <option value="5" >Suco</option>
+                </select>
+                <button id="removerPedido">Remover</button>
             </div>
         </div>
         <div id="stats">
@@ -61,7 +78,15 @@
         </div>
         <div id="fechamentoDePedidoOpacidade">
             <div id="fechamentoDePedido">
-                <h1>Fechamento do Pedido</h1>
+                <div id="escolhaDeMesa">
+                    <h1>Fechamento do Pedido</h1>
+                    <label for="inputFechamento">Mesa a Ser Fechada:</label>
+                    <input type="number" min="1" max="10" id="inputFechamento">
+                    <button>Fechar Mesa</button>
+                </div>
+                <ul>
+
+                </ul>
             </div>
         </div>
         

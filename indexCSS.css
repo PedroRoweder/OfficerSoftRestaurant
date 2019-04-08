@@ -121,12 +121,16 @@ h1:hover {
     border-bottom: 3px solid #656b6b;
 }
 
-#menuzinho, #menuzinho2 {
+#menuzinho, #menuzinho2, #menuzinho3 {
     margin: 0 auto;
     margin: 0 50px;
     padding: 0;
     border: 0px;
     text-align: center;
+}
+
+#pedidos #menuzinho3 button:hover {
+    border-color: #c23727; 
 }
 
 #pedidos input {
@@ -258,4 +262,49 @@ h1:hover {
     margin-top: 5px;
     margin-bottom: 0px;
     border-bottom: 3px solid #656b6b;
+}
+
+#escolhaDeMesa label {
+    font-size: 1.5em;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    margin: 2% 1% 2% 5%;
+    color: #ecf0f1;
+    float: left;
+    transition: 500ms;
+}
+
+#escolhaDeMesa input {
+    font-size: 1.2em;
+    width: 100px;
+    text-align: center;
+    padding: 5px 2px;
+    margin: 2% 5% 2% 0%;
+    margin-bottom: 15px;
+    float: left;
+    background: none;
+    border: 2px solid #656b6b;
+    border-radius: 20px;
+    color: #ecf0f1;
+    transition: 500ms;
+}
+
+#escolhaDeMesa button {
+    width: 30%;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 5px 20px;
+    float: left;
+    margin: 1% 7%;
+    margin-bottom: 30px;
+    background: none;
+    border: 2px solid #656b6b;
+    border-radius: 20px;
+    color: #ecf0f1;
+    transition: 500ms;
+    clear: both;
+}
+
+#escolhaDeMesa button:hover {
+    border: 2px solid #2ecc71;
 }
