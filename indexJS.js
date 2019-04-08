@@ -183,16 +183,24 @@ $(document).ready(function() {
     $('#checkin').on('click', function adicionaMesa(){
         let numeroDaMesa = document.getElementById("mesaCheckin").value;
         let numeroDePessoas = document.getElementById("clientes").value;
+
         $('#fecharMesa' + numeroDaMesa).show();
-        $('#mesaCheckin').attr("value", "");
+
+        document.getElementById("mesaCheckin").value = '';
+        document.getElementById("clientes").value = '';
+
         if(!ocupacao[numeroDaMesa - 1] && numeroDePessoas > 0 && numeroDaMesa > 0 && numeroDaMesa <= 10) {
+            
             ocupacao[numeroDaMesa - 1] = 1;
+
             pessasNoRestaurante = pessasNoRestaurante + parseInt(numeroDePessoas);
             mesasOcupadas++;
             mesasLivres--;
+
             $('#mesasLivres').html(mesasLivres);
             $('#mesasOcupadas').html(mesasOcupadas);
             $('#pessoasNoRestaurante').html(pessasNoRestaurante);
+
             $('#mesa' + numeroDaMesa).css("background-color", "#db5243");
             $('#mesa' + numeroDaMesa).css("border-color", "#962a1e");
             $('#mesa' + numeroDaMesa).hover(function(){
@@ -200,7 +208,9 @@ $(document).ready(function() {
             },function(){
                 $('#mesa' + numeroDaMesa).css("background-color", "#db5243");
             });
+
             $('#pessoas' + numeroDaMesa).html(numeroDePessoas);
+
     }else if (numeroDePessoas <= 0 || numeroDePessoas == isNaN) {
         alert("Não é possivel ocupar uma mesa sem clientes!");
     }else if (numeroDaMesa > 10 || numeroDaMesa < 0) {
@@ -209,22 +219,26 @@ $(document).ready(function() {
     });
 
     $('#submitPedidos').on('click', function adicionaPedido(){
+
         let numeroDaMesa = parseInt(document.getElementById("mesaPedidos").value);
         let pedidos = document.getElementById("listaPedidos");
         let valorDoPedido = pedidos.options[pedidos.selectedIndex].value; //TRAZ O VALOR DO PEDIDO
         let comidaPedida = pedidos.options[pedidos.selectedIndex].text; //TRAZ O TEXTO
         let quantidadeDoPedido = document.getElementById("quantidadeDoPedido").value;
 
+        document.getElementById("mesaPedidos").value = '';
+        document.getElementById("quantidadeDoPedido").value = '';
+
         if(ocupacao[numeroDaMesa -1]) {
         dinheiroReceber += valorDoPedido * parseInt(quantidadeDoPedido);
         mesas[numeroDaMesa - 1] += valorDoPedido * parseInt(quantidadeDoPedido);
 
-        for(let i = 0; i < quantidadeDoPedido; i++){
-            adicionaPedidoNaMesa(numeroDaMesa, comidaPedida);
-        }
+            for(let i = 0; i < quantidadeDoPedido; i++){
+                adicionaPedidoNaMesa(numeroDaMesa, comidaPedida);
+            }
 
-        $('#valor' + numeroDaMesa).html(mesas[numeroDaMesa - 1]);
-        $('#dinheiroReceber').html(dinheiroReceber);
+            $('#valor' + numeroDaMesa).html(mesas[numeroDaMesa - 1]);
+            $('#dinheiroReceber').html(dinheiroReceber);
         }else if (quantidadeDoPedido <= 0 || quantidadeDoPedido == isNaN) {
             alert("Quantidade nula!");
         }else { alert("Não é possivel adicionar um pedido a uma mesa vazia!"); }
@@ -236,15 +250,13 @@ $(document).ready(function() {
         let pedidoRemovido = document.getElementById("listaPedidosRemover");
         let comidaRemovida = pedidoRemovido.options[pedidoRemovido.selectedIndex].text;
         let valorRemovido = pedidoRemovido.options[pedidoRemovido.selectedIndex].value;
-        let dinheiroReceber = document.getElementById("dinheiroReceber").value;
 
-        
+        document.getElementById("quantidadeDoPedidoRemover").value = '';
+        document.getElementById("mesaRemover").value = '';
 
         if(ocupacao[mesaRemover - 1]) {
             removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantidadeRemover);
         }else { alert("Nao é possivel remover um pedido de uma mesa vazia!"); }
-
-
 
     });
 
