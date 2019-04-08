@@ -15,39 +15,39 @@
             <h1>Mesas</h1>
             <ul>
                 <li id="mesa1">Mesa 1 - Pessoas ( <span id="pessoas1">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa2">Mesa 2 - Pessoas ( <span id="pessoas2">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa3">Mesa 3 - Pessoas ( <span id="pessoas3">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa4">Mesa 4 - Pessoas ( <span id="pessoas4">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa5">Mesa 5 - Pessoas ( <span id="pessoas5">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa6">Mesa 6 - Pessoas ( <span id="pessoas6">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa7">Mesa 7 - Pessoas ( <span id="pessoas7">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa8">Mesa 8 - Pessoas ( <span id="pessoas8">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa9">Mesa 9 - Pessoas ( <span id="pessoas9">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
-                <li id="mesa10">Mesa 10 - Pessoas ( <span id="pessoas10">0</span> ) - Valor ( R$<span id="valor1">0,00</span> )</li>
+                <li id="mesa2">Mesa 2 - Pessoas ( <span id="pessoas2">0</span> ) - Valor ( R$<span id="valor2">0,00</span> )</li>
+                <li id="mesa3">Mesa 3 - Pessoas ( <span id="pessoas3">0</span> ) - Valor ( R$<span id="valor3">0,00</span> )</li>
+                <li id="mesa4">Mesa 4 - Pessoas ( <span id="pessoas4">0</span> ) - Valor ( R$<span id="valor4">0,00</span> )</li>
+                <li id="mesa5">Mesa 5 - Pessoas ( <span id="pessoas5">0</span> ) - Valor ( R$<span id="valor5">0,00</span> )</li>
+                <li id="mesa6">Mesa 6 - Pessoas ( <span id="pessoas6">0</span> ) - Valor ( R$<span id="valor6">0,00</span> )</li>
+                <li id="mesa7">Mesa 7 - Pessoas ( <span id="pessoas7">0</span> ) - Valor ( R$<span id="valor7">0,00</span> )</li>
+                <li id="mesa8">Mesa 8 - Pessoas ( <span id="pessoas8">0</span> ) - Valor ( R$<span id="valor8">0,00</span> )</li>
+                <li id="mesa9">Mesa 9 - Pessoas ( <span id="pessoas9">0</span> ) - Valor ( R$<span id="valor9">0,00</span> )</li>
+                <li id="mesa10">Mesa 10 - Pessoas ( <span id="pessoas10">0</span> ) - Valor ( R$<span id="valor10">0,00</span> )</li>
             </ul>
         </div>
         <div id="pedidos">
             <h1>Pedidos</h1>
             <div id="menuzinho">
             <h2>Check-in</h2>
-            <input type="number" placeholder="Mesa" min="1" max="10" id="mesa">
+            <input type="number" placeholder="Mesa" min="1" max="10" id="mesaCheckin">
             <input type="number" placeholder="Clientes" min="1" max="4" id="clientes">
             <button id="checkin">Check-in</button>
             </div>
             <div id="menuzinho2">
                 <h2>Adicionar Pedido</h2>
-                <input type="number" placeholder="Mesa" min="1" max="10">
+                <input type="number" placeholder="Mesa" min="1" max="10" id="mesaPedidos">
                 <select name="pedidos" id="listaPedidos" aria-placeholder="Pedido">
-                    <option value="#">Batata Frita</option>
-                    <option value="#">Batata Sautee</option>
-                    <option value="#">Porcão de Frango</option>
-                    <option value="#">Porcão de Carne</option>
-                    <option value="#">Hamburguer Original</option>
-                    <option value="#">Refrigerante</option>
-                    <option value="#">Cerveja</option>
-                    <option value="#">Suco</option>
+                    <option value="15">Batata Frita</option>
+                    <option value="17">Batata Sautee</option>
+                    <option value="20">Porcão de Frango</option>
+                    <option value="22">Porcão de Carne</option>
+                    <option value="18">Hamburguer Original</option>
+                    <option value="4">Refrigerante</option>
+                    <option value="7">Cerveja</option>
+                    <option value="5">Suco</option>
                 </select>
-                <button>Adicionar</button>
+                <button id="submitPedidos">Adicionar</button>
             </div>
         </div>
         <div id="stats">
