@@ -11,8 +11,7 @@ $(document).ready(function() {
     $('#checkin').on('click', function adicionaMesa(){
         let numeroDaMesa = document.getElementById("mesaCheckin").value;
         let numeroDePessoas = document.getElementById("clientes").value;
-
-        if(!ocupacao[numeroDaMesa - 1]) {
+        if(!ocupacao[numeroDaMesa - 1] && numeroDePessoas > 0 && numeroDaMesa > 0 && numeroDaMesa <= 10) {
             ocupacao[numeroDaMesa - 1] = 1;
             pessasNoRestaurante = pessasNoRestaurante + parseInt(numeroDePessoas);
             mesasOcupadas++;
@@ -27,9 +26,11 @@ $(document).ready(function() {
             },function(){
                 $('#mesa' + numeroDaMesa).css("background-color", "#db5243");
             });
-
             $('#pessoas' + numeroDaMesa).html(numeroDePessoas);
-
+    }else if (numeroDePessoas <= 0 || numeroDePessoas == isNaN) {
+        alert("Não é possivel ocupar uma mesa sem clientes!");
+    }else if (numeroDaMesa > 10 || numeroDaMesa < 0) {
+        alert("Mesa inexistente!");
     }else { alert("Esta mesa já está ocupada!"); }
     });
 
