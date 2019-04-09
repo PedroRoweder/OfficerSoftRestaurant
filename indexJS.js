@@ -29,17 +29,19 @@ var dinheiroReceber = 0;
 var mesas = [0,0,0,0,0,0,0,0,0,0];
 var pessoasNaMesa = [0,0,0,0,0,0,0,0,0,0];
 var ocupacao = [0,0,0,0,0,0,0,0,0,0];
-var somaExtrato1 = 0;
+
+
 function reabreMesa(numeroDaMesa){
     ocupacao[numeroDaMesa -1] = 0;
     $('#fecharMesa' + numeroDaMesa).hide();
-    mesasOcupadas--;
-    mesasLivres++;
+    mesasOcupadas = mesasOcupadas - 1;
+    mesasLivres = mesasLivres + 1;
     $('#mesasLivres').html(mesasLivres);
     $('#mesasOcupadas').html(mesasOcupadas);
-    console.log("pessoas da mesa " + pessoasNaMesa[numeroDaMesa - 1]);
+
     pessasNoRestaurante -= pessoasNaMesa[numeroDaMesa - 1];
-    $('#pessoasNoRestaurante').html(parseInt(pessasNoRestaurante));
+
+    $('#pessoasNoRestaurante').html(pessasNoRestaurante);
 
     $('#mesa' + numeroDaMesa).css("background-color", "#27ae60");
     $('#mesa' + numeroDaMesa).css("border-color", "#257245");
@@ -51,7 +53,7 @@ function reabreMesa(numeroDaMesa){
 
     $('#pessoas' + numeroDaMesa).html("0");
     $('#valor' + numeroDaMesa).html("0,00");
-    $('#fechamentoDePedidoOpacidade').hide();
+    $('#fechamentoDePedidoOpacidade').fadeOut(200);
 }
 
 function adicionaPedidoNaMesa(numeroDaMesa,comidaPedida, valorDoPedido){
@@ -59,7 +61,6 @@ function adicionaPedidoNaMesa(numeroDaMesa,comidaPedida, valorDoPedido){
         case 1:
             pedidosDaMesa1.push(comidaPedida);
             valorDaMesa1.push(parseInt(valorDoPedido));
-            console.log(valorDaMesa1);
         break;
         case 2:
             pedidosDaMesa2.push(comidaPedida);
@@ -105,7 +106,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 1:
             if(pedidosDaMesa1.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa1[pedidosDaMesa1.indexOf(comidaRemovida)];
+                    pedidosDaMesa1[pedidosDaMesa1.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -116,7 +117,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 2:
             if(pedidosDaMesa2.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa2[pedidosDaMesa2.indexOf(comidaRemovida)];
+                    pedidosDaMesa2[pedidosDaMesa2.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -127,7 +128,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 3:
             if(pedidosDaMesa3.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa3[pedidosDaMesa3.indexOf(comidaRemovida)];
+                    pedidosDaMesa3[pedidosDaMesa3.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -138,7 +139,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 4:
             if(pedidosDaMesa4.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa4[pedidosDaMesa4.indexOf(comidaRemovida)];
+                    pedidosDaMesa4[pedidosDaMesa4.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -149,7 +150,8 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 5:
             if(pedidosDaMesa5.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa5[pedidosDaMesa5.indexOf(comidaRemovida)];dinheiroReceber -= valorRemovido;
+                    pedidosDaMesa5[pedidosDaMesa5.indexOf(comidaRemovida)] = -1;
+                    dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
                     $('#dinheiroReceber').html(dinheiroReceber);
@@ -159,7 +161,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 6:
             if(pedidosDaMesa6.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa6[pedidosDaMesa6.indexOf(comidaRemovida)];
+                    pedidosDaMesa6[pedidosDaMesa6.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -170,7 +172,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 7:
             if(pedidosDaMesa7.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa7[pedidosDaMesa7.indexOf(comidaRemovida)];
+                    pedidosDaMesa7[pedidosDaMesa7.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -181,7 +183,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 8:
             if(pedidosDaMesa8.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa8[pedidosDaMesa8.indexOf(comidaRemovida)];
+                    pedidosDaMesa8[pedidosDaMesa8.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -192,7 +194,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 9:
             if(pedidosDaMesa9.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa9[pedidosDaMesa9.indexOf(comidaRemovida)];
+                    pedidosDaMesa9[pedidosDaMesa9.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -203,7 +205,7 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
         case 10:
             if(pedidosDaMesa10.includes(comidaRemovida)){
                 for(let i = 0; i < quantidadeRemover; i++){
-                    delete pedidosDaMesa10[pedidosDaMesa10.indexOf(comidaRemovida)];
+                    pedidosDaMesa10[pedidosDaMesa10.indexOf(comidaRemovida)] = -1;
                     dinheiroReceber -= valorRemovido;
                     mesas[mesaRemover - 1] -= valorRemovido;
                     $('#valor' + mesaRemover).html(mesas[mesaRemover - 1]);
@@ -218,38 +220,32 @@ function extratoDaMesa(extratoMesa) {
     $('#fechamentoDePedidoOpacidade').fadeIn(200);
     switch (extratoMesa) {
         case 1:
-            for(let i = 0; i < pedidosDaMesa1.length; i++){
-                $('#extrato').append("<li>" + pedidosDaMesa1[i] + " R$ " + valorDaMesa1[i] + "</li>");
-            }
             
-            if(!extratoFeito) {
-                for(let j = 0; j < valorDaMesa1.length; j++) {
-                    somaExtrato1 += valorDaMesa1[j];
-                    console.log(somaExtrato1);
+            for(let i = 0; i < pedidosDaMesa1.length; i++){
+                if(pedidosDaMesa1[i] != -1) {
+                    $('#extrato').append("<li>" + pedidosDaMesa1[i] + " R$ " + valorDaMesa1[i] + "</li>");
                 }
-                extratoFeito = 1;
             }
 
-            $('#somaExtrato').html("R$ " + somaExtrato1);
+            $('#somaExtrato').html("R$ " + mesas[extratoMesa - 1]);
+
 
             $('#confirmaFechamento').on('click', function() {
-                dinheiroReceber -= somaExtrato1;
+                dinheiroReceber -= mesas[extratoMesa - 1];
                 reabreMesa(extratoMesa);
-                $('#dinheiroReceber').html(parseInt(dinheiroReceber));
+                $('#dinheiroReceber').html(dinheiroReceber);
                 valorDaMesa1 = [];
                 pedidosDaMesa1 = [];
                 mesas[extratoMesa - 1] = 0;
                 somaExtrato1 = 0;
                 $('#extrato').empty();
-                extratoFeito = 0;
-                console.log(valorDaMesa1);
             });
         break;
         case 2:
             for(let i = 0; i < pedidosDaMesa2.length; i++){
                 $('#extrato').append("<li>" + pedidosDaMesa2[i] + " R$ " + valorDaMesa2[i] + "</li>");
             }
-            var somaExtrato2 = 0;
+            
             for(let j = 0; j < valorDaMesa2.length; j++) {
                 somaExtrato2 += valorDaMesa2[j];
             }
@@ -450,13 +446,13 @@ $(document).ready(function() {
             
             ocupacao[numeroDaMesa - 1] = 1;
             $('#fecharMesa' + numeroDaMesa).show();
-            pessasNoRestaurante = pessasNoRestaurante + parseInt(numeroDePessoas);
+            pessasNoRestaurante += parseInt(numeroDePessoas);
             mesasOcupadas++;
             mesasLivres--;
 
             $('#mesasLivres').html(mesasLivres);
             $('#mesasOcupadas').html(mesasOcupadas);
-            $('#pessoasNoRestaurante').html(parseInt(pessasNoRestaurante));
+            $('#pessoasNoRestaurante').html(pessasNoRestaurante);
 
             $('#mesa' + numeroDaMesa).css("background-color", "#db5243");
             $('#mesa' + numeroDaMesa).css("border-color", "#962a1e");
