@@ -36,8 +36,6 @@ var pessoasNaMesa = [0,0,0,0,0,0,0,0,0,0];
 //array que controla ocupacao das mesas
 var ocupacao = [0,0,0,0,0,0,0,0,0,0];
 
-
-
 //funcao que adiciona valores aos arrays de pedido e valor
 function adicionaPedidoNaMesa(numeroDaMesa,comidaPedida, valorDoPedido){
     switch(numeroDaMesa) {
@@ -282,7 +280,7 @@ function extratoDaMesa(extratoMesa) {
             });
         break;
         case 4:
-            for(let i = 0; i < pedidosDaMesa2.length; i++){
+            for(let i = 0; i < pedidosDaMesa4.length; i++){
                 if(pedidosDaMesa4[i] != -1) {
                     $('#extrato').append("<li>" + pedidosDaMesa4[i] + " R$ " + valorDaMesa4[i] + "</li>");
                 }
@@ -490,6 +488,7 @@ $(document).ready(function() {
             alert("Mesa inexistente!");
         }else { alert("Esta mesa já está ocupada!"); } //caso a mesa ja esteja ocupada, mensagem de erro
     });
+
     // funcao para adicao de pedidos em mesa
     $('#submitPedidos').on('click', function adicionaPedido(){
         //define variaveis para os inputs
@@ -519,6 +518,7 @@ $(document).ready(function() {
             alert("Quantidade nula!");
         }else { alert("Não é possivel adicionar um pedido a uma mesa vazia!"); } //caso a mesa esteja vazia, mensagem de erro
     });
+    
     //funcao para remover pedido em mesa
     $('#removerPedido').on('click', function removePedido(){
         //recebe valores dos inputs
