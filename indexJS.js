@@ -1,7 +1,7 @@
 $('.testeFecharMesa').hide();
 $('#fechamentoDePedidoOpacidade').hide();
 
-var pedidosDaMesa1 = [];
+var pedidosDaMesa1 = new Array;
 var pedidosDaMesa2 = [];
 var pedidosDaMesa3 = [];
 var pedidosDaMesa4 = [];
@@ -29,12 +29,36 @@ var dinheiroReceber = 0;
 var mesas = [0,0,0,0,0,0,0,0,0,0];
 var ocupacao = [0,0,0,0,0,0,0,0,0,0];
 
+function reabreMesa(numeroDaMesa){
+    ocupacao[numeroDaMesa -1] = 0;
+    $('#fecharMesa' + numeroDaMesa).hide();
+    mesasOcupadas--;
+    mesasLivres++;
+    $('#mesasLivres').html(mesasLivres);
+    $('#mesasOcupadas').html(mesasOcupadas);
+    let pessoasDaMesa = document.getElementById('valor' + numeroDaMesa);
+    pessasNoRestaurante -= pessoasDaMesa;
+    $('#pessoasNoRestaurante').html(parseInt(pessasNoRestaurante));
+
+    $('#mesa' + numeroDaMesa).css("background-color", "#27ae60");
+    $('#mesa' + numeroDaMesa).css("border-color", "#257245");
+    $('#mesa' + numeroDaMesa).hover(function(){
+        $('#mesa' + numeroDaMesa).css("background-color", "#34c972");
+    },function(){
+        $('#mesa' + numeroDaMesa).css("background-color", "#27ae60");
+    });
+
+    $('#pessoas' + numeroDaMesa).html("0");
+    $('#valor' + numeroDaMesa).html("0,00");
+    $('#fechamentoDePedidoOpacidade').hide();
+}
 
 function adicionaPedidoNaMesa(numeroDaMesa,comidaPedida, valorDoPedido){
     switch(numeroDaMesa) {
         case 1:
             pedidosDaMesa1.push(comidaPedida);
             valorDaMesa1.push(parseInt(valorDoPedido));
+            console.log(valorDaMesa1);
         break;
         case 2:
             pedidosDaMesa2.push(comidaPedida);
@@ -190,11 +214,12 @@ function removePedidosDaMesa(mesaRemover, comidaRemovida, valorRemovido, quantid
 }
 
 function extratoDaMesa(extratoMesa) {
-    $('#fechamentoDePedidoOpacidade').show();
+    $('#fechamentoDePedidoOpacidade').fadeIn(200);
     switch (extratoMesa) {
         case 1:
             for(let i = 0; i < pedidosDaMesa1.length; i++){
                 $('#extrato').append("<li>" + pedidosDaMesa1[i] + " R$ " + valorDaMesa1[i] + "</li>");
+                console.log("created Li");
             }
 
             var somaExtrato1 = 0;
@@ -204,6 +229,18 @@ function extratoDaMesa(extratoMesa) {
             }
 
             $('#somaExtrato').html("R$ " + somaExtrato1);
+
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato1;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa1 = [];
+                pedidosDaMesa1 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato1 = 0;
+                $('#extrato').empty();
+                console.log(valorDaMesa1);
+            });
         break;
         case 2:
             for(let i = 0; i < pedidosDaMesa2.length; i++){
@@ -214,6 +251,17 @@ function extratoDaMesa(extratoMesa) {
                 somaExtrato2 += valorDaMesa2[j];
             }
             $('#somaExtrato').html("R$ " + somaExtrato2);
+
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato2;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa2 = [];
+                pedidosDaMesa2 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato2 = 0;
+                $('#extrato').empty();
+            });
         break;
         case 3:
             for(let i = 0; i < pedidosDaMesa3.length; i++){
@@ -224,6 +272,16 @@ function extratoDaMesa(extratoMesa) {
                 somaExtrato3 += valorDaMesa3[j];
             }
             $('#somaExtrato').html("R$ " + somaExtrato3);
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato3;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa3 = [];
+                pedidosDaMesa3 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato3 = 0;
+                $('#extrato').empty();
+            });
         break;
         case 4:
             for(let i = 0; i < pedidosDaMesa4.length; i++){
@@ -234,6 +292,16 @@ function extratoDaMesa(extratoMesa) {
                 somaExtrato4 += valorDaMesa4[j];
             }
             $('#somaExtrato').html("R$ " + somaExtrato4);
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato4;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa4 = [];
+                pedidosDaMesa4 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato4 = 0;
+                $('#extrato').empty();
+            });
         break;
         case 5:
             for(let i = 0; i < pedidosDaMesa5.length; i++){
@@ -242,9 +310,18 @@ function extratoDaMesa(extratoMesa) {
             var somaExtrato5 = 0;
             for(let j = 0; j < valorDaMesa5.length; j++) {
                 somaExtrato5 += valorDaMesa5[j];
-                console.log(somaExtrato5);
             }
             $('#somaExtrato').html("R$ " + somaExtrato5);
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato5;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa5 = [];
+                pedidosDaMesa5 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato5 = 0;
+                $('#extrato').empty();
+            });
         break;
         case 6:
             for(let i = 0; i < pedidosDaMesa6.length; i++){
@@ -255,6 +332,16 @@ function extratoDaMesa(extratoMesa) {
                 somaExtrato6 += valorDaMesa6[j];
             }
             $('#somaExtrato').html("R$ " + somaExtrato6);
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato6;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa6 = [];
+                pedidosDaMesa6 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato6 = 0;
+                $('#extrato').empty();
+            });
         break;
         case 7:
             for(let i = 0; i < pedidosDaMesa7.length; i++){
@@ -265,6 +352,16 @@ function extratoDaMesa(extratoMesa) {
                 somaExtrato7 += valorDaMesa7[j];
             }
             $('#somaExtrato').html("R$ " + somaExtrato7);
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato7;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa7 = [];
+                pedidosDaMesa7 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato7 = 0;
+                $('#extrato').empty();
+            });
         break;
         case 8:
             for(let i = 0; i < pedidosDaMesa8.length; i++){
@@ -275,6 +372,16 @@ function extratoDaMesa(extratoMesa) {
                 somaExtrato8 += valorDaMesa8[j];
             }
             $('#somaExtrato').html("R$ " + somaExtrato8);
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato8;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa8 = [];
+                pedidosDaMesa8 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato8 = 0;
+                $('#extrato').empty();
+            });
         break;
         case 9:
             for(let i = 0; i < pedidosDaMesa9.length; i++){
@@ -285,6 +392,16 @@ function extratoDaMesa(extratoMesa) {
                 somaExtrato9 += valorDaMesa9[j];
             }
             $('#somaExtrato').html("R$ " + somaExtrato9);
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato9;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa9 = [];
+                pedidosDaMesa9 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato9 = 0;
+                $('#extrato').empty();
+            });
         break;
         case 10:
             for(let i = 0; i < pedidosDaMesa10.length; i++){
@@ -295,10 +412,23 @@ function extratoDaMesa(extratoMesa) {
                 somaExtrato10 += valorDaMesa10[j];
             }
             $('#somaExtrato').html("R$ " + somaExtrato10);
+            $('#confirmaFechamento').on('click', function() {
+                reabreMesa(extratoMesa);
+                dinheiroReceber -= somaExtrato10;
+                $('#dinheiroReceber').html(dinheiroReceber);
+                valorDaMesa10 = [];
+                pedidosDaMesa10 = [];
+                mesas[extratoMesa - 1] = 0;
+                somaExtrato10 = 0;
+                $('#extrato').empty();
+            });
         break;
 
     }
 }
+
+
+
 
 $(document).ready(function() {
 
@@ -321,7 +451,7 @@ $(document).ready(function() {
 
             $('#mesasLivres').html(mesasLivres);
             $('#mesasOcupadas').html(mesasOcupadas);
-            $('#pessoasNoRestaurante').html(pessasNoRestaurante);
+            $('#pessoasNoRestaurante').html(parseInt(pessasNoRestaurante));
 
             $('#mesa' + numeroDaMesa).css("background-color", "#db5243");
             $('#mesa' + numeroDaMesa).css("border-color", "#962a1e");
@@ -383,15 +513,20 @@ $(document).ready(function() {
     });
 
 
-    $('#fecharMesa1').on('click', function(){ extratoDaMesa(1); });
-    $('#fecharMesa2').on('click', function(){extratoDaMesa(2);});
-    $('#fecharMesa3').on('click', function(){extratoDaMesa(3);});
-    $('#fecharMesa4').on('click', function(){extratoDaMesa(4);});
-    $('#fecharMesa5').on('click', function(){extratoDaMesa(5);});
-    $('#fecharMesa6').on('click', function(){extratoDaMesa(6);});
-    $('#fecharMesa7').on('click', function(){extratoDaMesa(7);});
-    $('#fecharMesa8').on('click', function(){extratoDaMesa(8);});
-    $('#fecharMesa9').on('click', function(){extratoDaMesa(9);});
-    $('#fecharMesa10').on('click', function(){extratoDaMesa(10);});
+    $('#fecharMesa1').on('click', function(){ if(!valorDaMesa1.length == 0) { extratoDaMesa(1); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa2').on('click', function(){ if(!valorDaMesa2.length == 0) { extratoDaMesa(2); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa3').on('click', function(){ if(!valorDaMesa3.length == 0) { extratoDaMesa(3); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa4').on('click', function(){ if(!valorDaMesa4.length == 0) { extratoDaMesa(4); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa5').on('click', function(){ if(!valorDaMesa5.length == 0) { extratoDaMesa(5); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa6').on('click', function(){ if(!valorDaMesa6.length == 0) { extratoDaMesa(6); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa7').on('click', function(){ if(!valorDaMesa7.length == 0) { extratoDaMesa(7); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa8').on('click', function(){ if(!valorDaMesa8.length == 0) { extratoDaMesa(8); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa9').on('click', function(){ if(!valorDaMesa9.length == 0) { extratoDaMesa(9); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa10').on('click', function(){ if(!valorDaMesa10.length == 0) { extratoDaMesa(10); }else { alert("Esta mesa nao consumiu nada!"); } });
+
+    $('.exitIcon').on('click', function(){
+        $('#fechamentoDePedidoOpacidade').fadeOut(300); 
+        $('#extrato').empty();
+    })
 
 });

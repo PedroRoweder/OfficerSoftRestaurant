@@ -311,3 +311,18 @@ h1:hover {
     color: #404040;
     background-color: #2ecc71;
 }
+
+#fechamentoDePedido .exitIcon {
+    width: 25px;
+    margin: 0; padding: 0;
+    border: none;
+    top: 20%;
+    left: 96%;
+    transform: translate(0%, -90%);
+    background: none;
+    position: absolute;
+    float: right;
+}
+#fechamentoDePedido .exitIcon:hover {
+    color: red;
+}
