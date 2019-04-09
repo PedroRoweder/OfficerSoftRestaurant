@@ -5,6 +5,7 @@
         <title>Restaurante OfficerSoft</title>
         <link rel="stylesheet" href="indexCSS.css">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
         
@@ -30,14 +31,14 @@
             <h1>Pedidos</h1>
             <div id="menuzinho">
             <h2>Check-in</h2>
-            <input type="number" placeholder="Mesa" min="1" max="10" id="mesaCheckin">
-            <input type="number" placeholder="Clientes" min="1" max="4" id="clientes">
+            <input type="number" placeholder="Mesa" min="1" max="10" id="mesaCheckin" maxlength="2">
+            <input type="number" placeholder="Clientes" min="1" max="4" id="clientes" maxlength="2">
             <button id="checkin">Check-in</button>
             </div>
             <div id="menuzinho2">
                 <h2>Adicionar Pedido</h2>
-                <input type="number" placeholder="Mesa" value="" min="1" max="10" id="mesaPedidos">
-                <input type="number" placeholder="Qtd." min="1" id="quantidadeDoPedido">
+                <input type="number" placeholder="Mesa" value="" min="1" max="10" id="mesaPedidos" maxlength="2">
+                <input type="number" placeholder="Qtd." min="1" id="quantidadeDoPedido" maxlength="2">
                 <select name="pedidos" id="listaPedidos" placeholder="Pedidos">
                     <option value="15">Batata Frita</option>
                     <option value="17">Batata Sautee</option>
@@ -52,8 +53,8 @@
             </div>
             <div id="menuzinho3">
                 <h2>Remover Pedido</h2>
-                <input type="number" id="mesaRemover" min="1" max="10" placeholder="Mesa">
-                <input type="number" placeholder="Qtd." min="1" id="quantidadeDoPedidoRemover">
+                <input type="number" id="mesaRemover" min="1" max="10" placeholder="Mesa" maxlength="2">
+                <input type="number" placeholder="Qtd." min="1" id="quantidadeDoPedidoRemover" maxlength="2">
                 <select name="pedidos" id="listaPedidosRemover" placeholder="Pedidos">
                     <option value="15">Batata Frita</option>
                     <option value="17">Batata Sautee</option>
@@ -90,7 +91,6 @@
                 </ul>
             </div>
         </div>
-        
         <script type="text/javascript" src="indexJS.js"></script>
     </body>
 

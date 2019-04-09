@@ -1,5 +1,5 @@
 html {
-    background-color: #bdc3c7;
+    background-color: #f8c291;
 }
 
 h1 {
@@ -8,10 +8,10 @@ h1 {
     width: 40%;
     margin: 0 auto;
     font-family: 'Quicksand', sans-serif;
-    color: #393b3b;
+    color: #74502c;
     margin-top: 5px;
     margin-bottom: 15px;
-    border-bottom: 3px solid #383d3d;
+    border-bottom: 3px solid #74502c;
     transition: 1s;
 }
 h1:hover {
@@ -316,13 +316,10 @@ h1:hover {
     width: 25px;
     margin: 0; padding: 0;
     border: none;
-    top: 20%;
+    top: 10%;
     left: 96%;
-    transform: translate(0%, -90%);
+    transform: translate(-4%, -90%);
     background: none;
     position: absolute;
     float: right;
-}
-#fechamentoDePedido .exitIcon:hover {
-    color: red;
 }

@@ -1,7 +1,7 @@
 $('.testeFecharMesa').hide();
 $('#fechamentoDePedidoOpacidade').hide();
 
-var pedidosDaMesa1 = new Array;
+var pedidosDaMesa1 = [];
 var pedidosDaMesa2 = [];
 var pedidosDaMesa3 = [];
 var pedidosDaMesa4 = [];
@@ -21,14 +21,15 @@ var valorDaMesa7 = [];
 var valorDaMesa8 = [];
 var valorDaMesa9 = [];
 var valorDaMesa10 = [];
-
+var extratoFeito = 0;
 var pessasNoRestaurante = 0;
 var mesasLivres = 10;
 var mesasOcupadas = 0;
 var dinheiroReceber = 0;
 var mesas = [0,0,0,0,0,0,0,0,0,0];
+var pessoasNaMesa = [0,0,0,0,0,0,0,0,0,0];
 var ocupacao = [0,0,0,0,0,0,0,0,0,0];
-
+var somaExtrato1 = 0;
 function reabreMesa(numeroDaMesa){
     ocupacao[numeroDaMesa -1] = 0;
     $('#fecharMesa' + numeroDaMesa).hide();
@@ -36,8 +37,8 @@ function reabreMesa(numeroDaMesa){
     mesasLivres++;
     $('#mesasLivres').html(mesasLivres);
     $('#mesasOcupadas').html(mesasOcupadas);
-    let pessoasDaMesa = document.getElementById('valor' + numeroDaMesa);
-    pessasNoRestaurante -= pessoasDaMesa;
+    console.log("pessoas da mesa " + pessoasNaMesa[numeroDaMesa - 1]);
+    pessasNoRestaurante -= pessoasNaMesa[numeroDaMesa - 1];
     $('#pessoasNoRestaurante').html(parseInt(pessasNoRestaurante));
 
     $('#mesa' + numeroDaMesa).css("background-color", "#27ae60");
@@ -219,26 +220,28 @@ function extratoDaMesa(extratoMesa) {
         case 1:
             for(let i = 0; i < pedidosDaMesa1.length; i++){
                 $('#extrato').append("<li>" + pedidosDaMesa1[i] + " R$ " + valorDaMesa1[i] + "</li>");
-                console.log("created Li");
             }
-
-            var somaExtrato1 = 0;
-
-            for(let j = 0; j < valorDaMesa1.length; j++) {
-                somaExtrato1 += valorDaMesa1[j];
+            
+            if(!extratoFeito) {
+                for(let j = 0; j < valorDaMesa1.length; j++) {
+                    somaExtrato1 += valorDaMesa1[j];
+                    console.log(somaExtrato1);
+                }
+                extratoFeito = 1;
             }
 
             $('#somaExtrato').html("R$ " + somaExtrato1);
 
             $('#confirmaFechamento').on('click', function() {
-                reabreMesa(extratoMesa);
                 dinheiroReceber -= somaExtrato1;
-                $('#dinheiroReceber').html(dinheiroReceber);
+                reabreMesa(extratoMesa);
+                $('#dinheiroReceber').html(parseInt(dinheiroReceber));
                 valorDaMesa1 = [];
                 pedidosDaMesa1 = [];
                 mesas[extratoMesa - 1] = 0;
                 somaExtrato1 = 0;
                 $('#extrato').empty();
+                extratoFeito = 0;
                 console.log(valorDaMesa1);
             });
         break;
@@ -254,7 +257,7 @@ function extratoDaMesa(extratoMesa) {
 
             $('#confirmaFechamento').on('click', function() {
                 reabreMesa(extratoMesa);
-                dinheiroReceber -= somaExtrato2;
+                dinheiroReceber -= parseInt(somaExtrato2);
                 $('#dinheiroReceber').html(dinheiroReceber);
                 valorDaMesa2 = [];
                 pedidosDaMesa2 = [];
@@ -436,7 +439,9 @@ $(document).ready(function() {
         let numeroDaMesa = document.getElementById("mesaCheckin").value;
         let numeroDePessoas = document.getElementById("clientes").value;
 
-        $('#fecharMesa' + numeroDaMesa).show();
+        pessoasNaMesa[numeroDaMesa - 1] = numeroDePessoas;
+
+        
 
         document.getElementById("mesaCheckin").value = '';
         document.getElementById("clientes").value = '';
@@ -444,7 +449,7 @@ $(document).ready(function() {
         if(!ocupacao[numeroDaMesa - 1] && numeroDePessoas > 0 && numeroDaMesa > 0 && numeroDaMesa <= 10) {
             
             ocupacao[numeroDaMesa - 1] = 1;
-
+            $('#fecharMesa' + numeroDaMesa).show();
             pessasNoRestaurante = pessasNoRestaurante + parseInt(numeroDePessoas);
             mesasOcupadas++;
             mesasLivres--;
@@ -513,16 +518,16 @@ $(document).ready(function() {
     });
 
 
-    $('#fecharMesa1').on('click', function(){ if(!valorDaMesa1.length == 0) { extratoDaMesa(1); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa2').on('click', function(){ if(!valorDaMesa2.length == 0) { extratoDaMesa(2); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa3').on('click', function(){ if(!valorDaMesa3.length == 0) { extratoDaMesa(3); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa4').on('click', function(){ if(!valorDaMesa4.length == 0) { extratoDaMesa(4); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa5').on('click', function(){ if(!valorDaMesa5.length == 0) { extratoDaMesa(5); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa6').on('click', function(){ if(!valorDaMesa6.length == 0) { extratoDaMesa(6); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa7').on('click', function(){ if(!valorDaMesa7.length == 0) { extratoDaMesa(7); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa8').on('click', function(){ if(!valorDaMesa8.length == 0) { extratoDaMesa(8); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa9').on('click', function(){ if(!valorDaMesa9.length == 0) { extratoDaMesa(9); }else { alert("Esta mesa nao consumiu nada!"); } });
-    $('#fecharMesa10').on('click', function(){ if(!valorDaMesa10.length == 0) { extratoDaMesa(10); }else { alert("Esta mesa nao consumiu nada!"); } });
+    $('#fecharMesa1').on('click', function(){ if(!valorDaMesa1.length == 0) { extratoDaMesa(1); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(1); } });
+    $('#fecharMesa2').on('click', function(){ if(!valorDaMesa2.length == 0) { extratoDaMesa(2); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(2); } });
+    $('#fecharMesa3').on('click', function(){ if(!valorDaMesa3.length == 0) { extratoDaMesa(3); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(3); } });
+    $('#fecharMesa4').on('click', function(){ if(!valorDaMesa4.length == 0) { extratoDaMesa(4); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(4); } });
+    $('#fecharMesa5').on('click', function(){ if(!valorDaMesa5.length == 0) { extratoDaMesa(5); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(5); } });
+    $('#fecharMesa6').on('click', function(){ if(!valorDaMesa6.length == 0) { extratoDaMesa(6); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(6); } });
+    $('#fecharMesa7').on('click', function(){ if(!valorDaMesa7.length == 0) { extratoDaMesa(7); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(7); } });
+    $('#fecharMesa8').on('click', function(){ if(!valorDaMesa8.length == 0) { extratoDaMesa(8); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(8); } });
+    $('#fecharMesa9').on('click', function(){ if(!valorDaMesa9.length == 0) { extratoDaMesa(9); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(9); } });
+    $('#fecharMesa10').on('click', function(){ if(!valorDaMesa10.length == 0) { extratoDaMesa(10); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(10); } });
 
     $('.exitIcon').on('click', function(){
         $('#fechamentoDePedidoOpacidade').fadeOut(300); 
