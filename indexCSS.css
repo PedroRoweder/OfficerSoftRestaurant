@@ -1,5 +1,5 @@
 html {
-    background-color: #f8c291;
+    background-color: #CAD3C8;
 }
 
 h1 {
@@ -8,10 +8,10 @@ h1 {
     width: 40%;
     margin: 0 auto;
     font-family: 'Quicksand', sans-serif;
-    color: #74502c;
+    color: rgb(70, 73, 69);
     margin-top: 5px;
     margin-bottom: 15px;
-    border-bottom: 3px solid #74502c;
+    border-bottom: 3px solid rgb(58, 59, 57);
     transition: 1s;
 }
 h1:hover {

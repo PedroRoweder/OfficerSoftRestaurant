@@ -539,7 +539,7 @@ $(document).ready(function() {
 
     });
 
-    //botoes individuais para extrato, que executao tal funcao
+    //botoes individuais para extrato, que executam tal funcao
     $('#fecharMesa1').on('click', function(){ if(!valorDaMesa1.length == 0) { extratoDaMesa(1); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(1); } });
     $('#fecharMesa2').on('click', function(){ if(!valorDaMesa2.length == 0) { extratoDaMesa(2); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(2); } });
     $('#fecharMesa3').on('click', function(){ if(!valorDaMesa3.length == 0) { extratoDaMesa(3); }else { alert("Esta mesa nao consumiu nada!");extratoDaMesa(3); } });
