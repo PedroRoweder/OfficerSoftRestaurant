@@ -24,10 +24,8 @@ var valorDaMesa7 = [];
 var valorDaMesa8 = [];
 var valorDaMesa9 = [];
 var valorDaMesa10 = [];
-//variaveis de controle para pessoas, mesas e dinheiro no restaurante
+//variaveis de controle para pessoas e dinheiro no restaurante
 var pessasNoRestaurante = 0;
-var mesasLivres = 10;
-var mesasOcupadas = 0;
 var dinheiroReceber = 0;
 //array que armazena o valor total de consumo da mesa
 var mesas = [0,0,0,0,0,0,0,0,0,0];
@@ -226,7 +224,6 @@ function extratoDaMesa(extratoMesa) {
             $('#somaExtrato').html("R$ " + mesas[extratoMesa - 1]);
             //ao clicar no botao de fechamento =
             $('#confirmaFechamento').on('click', function() {
-                console.log("clicado");
                 //executa a funcao de reabrir mesa
                 reabreMesa(extratoMesa);
                 //subtrai o valor da mesa, do dinheiro a receber
@@ -413,8 +410,6 @@ function extratoDaMesa(extratoMesa) {
 function reabreMesa(numeroDaMesa){
     //define a ocupacao da mesa como falsa
     ocupacao[numeroDaMesa -1] = 0;
-
-    console.log("entrou");
     //esconde o botao individual de fechar mesa
     $('#fecharMesa' + numeroDaMesa).hide();
     //subtrai o numero de pessoas naquela mesa, do numero de pessoas no restaurante e altera o valor no site
@@ -422,13 +417,6 @@ function reabreMesa(numeroDaMesa){
     $('#pessoasNoRestaurante').html(pessasNoRestaurante);
     //transforma o numero de pessoas na mesa para zero
     pessoasNaMesa[numeroDaMesa - 1] = 0;
-    //modifica valores de mesas livres e mesas ocupadas e altera seu valor no site
-    mesasLivres = mesasLivres + 1;
-    mesasOcupadas = mesasOcupadas - 1;
-    $('#mesasLivres').html(mesasLivres);
-    $('#mesasOcupadas').html(mesasOcupadas);
-
-    console.log("L: " + mesasLivres, "O: " + mesasOcupadas);
     //altera o CSS das mesas, para verde
     $('#mesa' + numeroDaMesa).css("background-color", "#27ae60");
     $('#mesa' + numeroDaMesa).css("border-color", "#257245");
@@ -463,11 +451,7 @@ $(document).ready(function() {
             //adiciona o numero de pessoas na mesa ao numero total de pessoas no restaurante e a variavel individual de mesa
             pessasNoRestaurante += parseInt(numeroDePessoas);
             pessoasNaMesa[numeroDaMesa - 1] = parseInt(numeroDePessoas);
-            //altera valores de mesas livres e ocupadas, e faz a alteracao no site
-            mesasLivres = mesasLivres - 1;
-            mesasOcupadas = mesasOcupadas + 1;
-            $('#mesasLivres').html(mesasLivres);
-            $('#mesasOcupadas').html(mesasOcupadas);
+            //altera quantidade de pessoas no site
             $('#pessoasNoRestaurante').html(pessasNoRestaurante);
             //altera o CSS das mesas para vermelho
             $('#mesa' + numeroDaMesa).css("background-color", "#db5243");
